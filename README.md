@@ -1,4 +1,5 @@
 # Map Tiles Downloader
+[![Docker Image CI](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml)
 
 **A super easy to use GUI for downloading map tiles**
 
