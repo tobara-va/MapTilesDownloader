@@ -1,5 +1,8 @@
-# Map Tiles Downloader
+# Map Tiles Downloader 
 [![Docker Image CI](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml)
+<img alt="Docker last pushed" src="https://img.shields.io/badge/dynamic/json?color=blue&label=Last%20pushed&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Ftobara8%2Fmap-tiles-downloader%2F&logo=docker&?link=http://left&link=https://hub.docker.com/repository/docker/tobara8/map-tiles-downloader">
+[![Docker Image Size](https://img.shields.io/docker/image-size/tobara8/map-tiles-downloader?logo=Docker)](https://hub.docker.com/r/jokobsk/pi.alert)
+<img src="https://img.shields.io/docker/pulls/tobara8/map-tiles-downloader?logo=docker&color=0aa8d2&logoColor=fff" alt="Docker Pulls">
 
 **A super easy to use GUI for downloading map tiles**
 
