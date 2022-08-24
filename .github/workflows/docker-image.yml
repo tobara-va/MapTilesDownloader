@@ -14,11 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag tobara8/map-tiles-downloader:$(date +%s) --tag tobara8/map-tiles-downloader:latest
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
-        name: myDocker/repository
+        name: tobara8/map-tiles-downloader
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: "latest,$(date +%s)"
