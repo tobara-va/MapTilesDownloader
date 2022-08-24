@@ -1,10 +1,10 @@
 version: '3'
 services:
   map-downloader:
-    image: tobara/map-tiles-downloader
+    container_name: map-downloader
+    image: tobara8/map-tiles-downloader
     ports:
       - 8081:8080
     restart: unless-stopped
     volumes:
-      # Mount location for downloaded map tiles
       - ./output:/app/output

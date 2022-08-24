@@ -487,7 +487,7 @@ $(function() {
 				return;
 			}
 
-			var boxLayer = previewRect(item);
+			//var boxLayer = previewRect(item);
 
 			var url = "/download-tile";
 
@@ -521,10 +521,10 @@ $(function() {
 				}
 
 				if(data.code == 200) {
-					showTinyTile(data.image)
-					logItem(item.x, item.y, item.z, data.message);
+					//showTinyTile(data.image)
+					//logItem(item.x, item.y, item.z, data.message);
 				} else {
-					logItem(item.x, item.y, item.z, data.code + " Error downloading tile");
+					//logItem(item.x, item.y, item.z, data.code + " Error downloading tile");
 				}
 
 			}).fail(function(data, textStatus, errorThrown) {
@@ -539,7 +539,7 @@ $(function() {
 			}).always(function(data) {
 				i++;
 
-				removeLayer(boxLayer);
+				//removeLayer(boxLayer);
 				updateProgress(i, allTiles.length);
 
 				done();
