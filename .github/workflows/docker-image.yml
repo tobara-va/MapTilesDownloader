@@ -23,6 +23,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: "latest"
     - name: Scan image
+      id: scan
       uses: anchore/scan-action@v3
       with:
         image: "tobara8/map-tiles-downloader:latest"
