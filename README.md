@@ -30,6 +30,12 @@ Docker is a pretty simple way to install and contain applications. [Install Dock
 docker run -v $PWD/output:/app/output/ -p 8080:8080 -it aliashraf/map-tiles-downloader
 ```
 
+or for a faster but less verbose UI
+
+```sh
+docker run -v $PWD/output:/app/output/ -p 8080:8080 -it tobara8/map-tiles-downloader:quiet-ui
+```
+
 Now open the browser and head over to `http://localhost:8080`. The downloaded maps will be stored in the `output` directory.
 
 ## Purpose
