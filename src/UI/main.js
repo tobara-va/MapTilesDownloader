@@ -452,6 +452,7 @@ $(function() {
 		var outputType = $("#output-type").val();
 		var outputScale = $("#output-scale").val();
 		var source = $("#source-box").val()
+		var attribution = $("#attribution-box").val()
 
 		var bounds = getBounds();
 		var boundsArray = [bounds.getSouthWest().lng, bounds.getSouthWest().lat, bounds.getNorthEast().lng, bounds.getNorthEast().lat]
@@ -468,6 +469,7 @@ $(function() {
 		data.append('timestamp', timestamp)
 		data.append('bounds', boundsArray.join(","))
 		data.append('center', centerArray.join(","))
+		data.append('attribution', attribution)
 
 		var request = await $.ajax({
 			url: "/start-download",

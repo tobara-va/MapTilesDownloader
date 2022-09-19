@@ -138,6 +138,7 @@ class serverHandler(BaseHTTPRequestHandler):
 			boundsArray = map(float, bounds.split(","))
 			center = str(postvars['center'][0])
 			centerArray = map(float, center.split(","))
+			attribution = str(postvars['attribution'][0])
 
 			replaceMap = {
 				"timestamp": str(timestamp),
@@ -150,7 +151,7 @@ class serverHandler(BaseHTTPRequestHandler):
 
 			filePath = os.path.join("output", outputDirectory, outputFile)
 
-			self.writerByType(outputType).addMetadata(lock, os.path.join("output", outputDirectory), filePath, outputFile, "Map Tiles Downloader via AliFlux", "png", boundsArray, centerArray, minZoom, maxZoom, "mercator", 256 * outputScale)
+			self.writerByType(outputType).addMetadata(attribution, lock, os.path.join("output", outputDirectory), filePath, outputFile, "Map Tiles Downloader via AliFlux", "png", boundsArray, centerArray, minZoom, maxZoom, "mercator", 256 * outputScale)
 
 			result = {}
 			result["code"] = 200
