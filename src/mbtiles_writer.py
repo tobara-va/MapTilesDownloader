@@ -29,7 +29,7 @@ class MbtilesWriter:
 
 
 	@staticmethod
-	def addMetadata(lock, path, file, name, description, format, bounds, center, minZoom, maxZoom, profile="mercator", tileSize=256):
+	def addMetadata(attribution, lock, path, file, name, description, format, bounds, center, minZoom, maxZoom, profile="mercator", tileSize=256):
 
 		MbtilesWriter.ensureDirectory(lock, path)
 
@@ -64,7 +64,7 @@ class MbtilesWriter:
 				("scheme", "tms"), 
 				("generator", "Map Tiles Downloader via AliFlux"),
 				("type", "overlay"),
-				("attribution", "Map Tiles Downloader via AliFlux"),
+				("attribution", attribution),
 			])
 
 			connection.commit()
