@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "attributionAutomation" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "attributionAutomation" ]
   schedule:
     - cron: '0 2 1 * *'
 jobs:
@@ -21,7 +21,7 @@ jobs:
         name: tobara8/map-tiles-downloader
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: "latest"
+        tags: "testing"
     - name: Scan image
       id: scan
       uses: anchore/scan-action@v3
