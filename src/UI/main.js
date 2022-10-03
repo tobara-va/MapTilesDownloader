@@ -23,16 +23,16 @@ $(function() {
 
 		"div-2": "",
 
-		"# Google Maps":				"https://mt0.google.com/vt?lyrs=m&x={x}&s=&y={y}&z={z}",
-		"# Google Maps Satellite":		"https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}",
-		"# Google Maps Hybrid":			"https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}",
-		"# Google Maps Terrain":		"https://mt0.google.com/vt?lyrs=p&x={x}&s=&y={y}&z={z}",
+		"Google Maps":				"https://mt0.google.com/vt?lyrs=m&x={x}&s=&y={y}&z={z}",
+		"Google Maps Satellite":		"https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}",
+		"Google Maps Hybrid":			"https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}",
+		"Google Maps Terrain":		"https://mt0.google.com/vt?lyrs=p&x={x}&s=&y={y}&z={z}",
 
 		"div-3": "",
 
-		"# Open Street Maps":		"https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-		"# Open Cycle Maps":		"http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
-		"# Open PT Transport":		"http://openptmap.org/tiles/{z}/{x}/{y}.png",
+		"Open Street Maps":		"https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		"Open Cycle Maps":		"http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
+		"Open PT Transport":		"http://openptmap.org/tiles/{z}/{x}/{y}.png",
 
 		"div-4": "",
 
@@ -104,7 +104,7 @@ $(function() {
 			.then((data) => {
 				$("#attribution-box").val(data.copyrightText);
 			})
-		} else if ($("#source-box").val() === "http://ecn.t0.tiles.virtualearth.net/tiles/r{quad}.jpeg?g=129&mkt=en&stl=H") {
+		} else if ($("#source-box").val() === "http://ecn.t0.tiles.virtualearth.net/tiles/r{quad}.jpeg?g=129&mkt=en&stl=H" || $("#source-box").val() === "http://ecn.t0.tiles.virtualearth.net/tiles/a{quad}.jpeg?g=129&mkt=en&stl=H" || $("#source-box").val() === "http://ecn.t0.tiles.virtualearth.net/tiles/h{quad}.jpeg?g=129&mkt=en&stl=H") {
 			const url = "https://dev.virtualearth.net/REST/V1/Imagery/Metadata/Road ";
 
 			fetch(url)
@@ -114,8 +114,10 @@ $(function() {
 			})
 		} else if ($("#source-box").val() === "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" || $("#source-box").val() === "http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png" || $("#source-box").val() === "http://openptmap.org/tiles/{z}/{x}/{y}.png") {
 			$("#attribution-box").val("<a href=\"https://openstreetmap.org/copyright\">OpenStreetMap</a> here!");
-		} else {
-			$("#attribution-box").val("Tiles © Insert <a href=\"https://google.com\">Copyright</a> here!");
+		} else if ($("#source-box").val() === "https://mt0.google.com/vt?lyrs=m&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=p&x={x}&s=&y={y}&z={z}") {
+			$("#attribution-box").val("Map data © 2022 Google");
+		}else {
+			$("#attribution-box").val("Tiles © Insert Copyright here!");
 		}	
 	}
 
