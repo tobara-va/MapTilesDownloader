@@ -24,20 +24,20 @@ $(function() {
 		"div-2": "",
 
 		"Google Maps":				"https://mt0.google.com/vt?lyrs=m&x={x}&s=&y={y}&z={z}",
-		"Google Maps Satellite":		"https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}",
-		"Google Maps Hybrid":			"https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}",
+		"Google Maps Satellite":	"https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}",
+		"Google Maps Hybrid":		"https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}",
 		"Google Maps Terrain":		"https://mt0.google.com/vt?lyrs=p&x={x}&s=&y={y}&z={z}",
 
 		"div-3": "",
 
 		"Open Street Maps":		"https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
 		"Open Cycle Maps":		"http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
-		"Open PT Transport":		"http://openptmap.org/tiles/{z}/{x}/{y}.png",
+		"Open PT Transport":	"http://openptmap.org/tiles/{z}/{x}/{y}.png",
 
 		"div-4": "",
 
 		"ESRI World Imagery":	"http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-		"# Wikimedia Maps":		"https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png",
+		"*# Wikimedia Maps":	"https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png",
 		"# NASA GIBS":			"https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg",
 
 		"div-5": "",
@@ -116,7 +116,7 @@ $(function() {
 			$("#attribution-box").val("<a href=\"https://openstreetmap.org/copyright\">OpenStreetMap</a> here!");
 		} else if ($("#source-box").val() === "https://mt0.google.com/vt?lyrs=m&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=s&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=h&x={x}&s=&y={y}&z={z}" || $("#source-box").val() === "https://mt0.google.com/vt?lyrs=p&x={x}&s=&y={y}&z={z}") {
 			$("#attribution-box").val("Map data © 2022 Google");
-		}else {
+		} else {
 			$("#attribution-box").val("Tiles © Insert Copyright here!");
 		}	
 	}
