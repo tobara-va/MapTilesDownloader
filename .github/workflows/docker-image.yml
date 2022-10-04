@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "attributionAutomation" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "attributionAutomation" ]
   schedule:
     - cron: '0 2 1 * *'
 jobs:
