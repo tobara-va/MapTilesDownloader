@@ -659,5 +659,4 @@ $(function() {
 	initializeGridPreview();
 	initializeMoreOptions();
 	initializeDownloader();
-	//initializeAttribution();
 });
