@@ -49,7 +49,7 @@ $(function() {
 
 	function initializeMap() {
 
-		mapboxgl.accessToken = 'pk.eyJ1IjoidGJsYXVlcjAiLCJhIjoiY20xZ3BkOXVmMDZjdDJ2cHkyYWxpd3gycCJ9.9a18KJcUxP9zrP9T8nfgGg';
+		mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpYXNocmFmIiwiYSI6ImNqdXl5MHV5YTAzNXI0NG51OWFuMGp4enQifQ.zpd2gZFwBTRqiapp1yci9g';
 
 		map = new mapboxgl.Map({
 			container: 'map-view',
