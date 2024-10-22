@@ -18,7 +18,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
-        name: tobara8/map-tiles-downloader
+        name: tblauer/map-tiles-downloader
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: "latest"
@@ -26,7 +26,7 @@ jobs:
       id: scan
       uses: anchore/scan-action@v3
       with:
-        image: "tobara8/map-tiles-downloader:latest"
+        image: "tblauer/map-tiles-downloader:latest"
         fail-build: false
         acs-report-enable: true
     - name: upload Anchore scan SARIF report

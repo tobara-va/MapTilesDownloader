@@ -49,7 +49,7 @@ $(function() {
 
 	function initializeMap() {
 
-		mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpYXNocmFmIiwiYSI6ImNqdXl5MHV5YTAzNXI0NG51OWFuMGp4enQifQ.zpd2gZFwBTRqiapp1yci9g';
+		mapboxgl.accessToken = 'pk.eyJ1IjoidGJsYXVlcjAiLCJhIjoiY20xZ3BkOXVmMDZjdDJ2cHkyYWxpd3gycCJ9.9a18KJcUxP9zrP9T8nfgGg';
 
 		map = new mapboxgl.Map({
 			container: 'map-view',
@@ -59,7 +59,7 @@ $(function() {
 		});
 
 		geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-		var control = map.addControl(geocoder);
+		map.addControl(geocoder);
 	}
 
 	function initializeMaterialize() {
@@ -76,7 +76,7 @@ $(function() {
 		for(var key in sources) {
 			var url = sources[key];
 
-			if(url == "") {
+			if(url === "") {
 				dropdown.append("<hr/>");
 				continue;
 			}
@@ -139,11 +139,11 @@ $(function() {
 		var outputFileBox = $("#output-file-box")
 		$("#output-type").change(function() {
 			var outputType = $("#output-type").val();
-			if(outputType == "mbtiles") {
+			if(outputType === "mbtiles") {
 				outputFileBox.val("tiles.mbtiles")
-			} else if(outputType == "repo") {
+			} else if(outputType === "repo") {
 				outputFileBox.val("tiles.repo")
-			} else if(outputType == "directory") {
+			} else if(outputType === "directory") {
 				outputFileBox.val("{z}/{x}/{y}.png")
 			}
 		})
@@ -243,7 +243,7 @@ $(function() {
 
 	function getArrayByBounds(bounds) {
 
-		var tileArray = [
+		let tileArray = [
 			[ bounds.getSouthWest().lng, bounds.getNorthEast().lat ],
 			[ bounds.getNorthEast().lng, bounds.getNorthEast().lat ],
 			[ bounds.getNorthEast().lng, bounds.getSouthWest().lat ],
@@ -269,7 +269,7 @@ $(function() {
 
 		var areaPolygon = draw.getAll().features[0];
 
-		if(turf.booleanDisjoint(polygon, areaPolygon) == false) {
+		if(turf.booleanDisjoint(polygon, areaPolygon) === false) {
 			return true;
 		}
 
@@ -293,7 +293,7 @@ $(function() {
 
 		var rects = [];
 
-		var outputScale = $("#output-scale").val();
+		//var outputScale = $("#output-scale").val();
 		//var thisZoom = zoomLevel - (outputScale-1)
 		var thisZoom = zoomLevel
 
@@ -302,10 +302,10 @@ $(function() {
 		var BY = lat2tile(bounds.getSouthWest().lat, thisZoom);
 		var RX  = long2tile(bounds.getNorthEast().lng, thisZoom);
 
-		for(var y = TY; y <= BY; y++) {
-			for(var x = LX; x <= RX; x++) {
+		for(let y = TY; y <= BY; y++) {
+			for(let x = LX; x <= RX; x++) {
 
-				var rect = getTileRect(x, y, thisZoom);
+				const rect = getTileRect(x, y, thisZoom);
 
 				if(isTileInSelection(rect)) {
 					rects.push({
@@ -407,10 +407,10 @@ $(function() {
 	    for (var i = z; i > 0; i--) {
 	        var digit = '0';
 	        var mask = 1 << (i - 1);
-	        if ((x & mask) != 0) {
+	        if ((x & mask) !== 0) {
 	            digit++;
 	        }
-	        if ((y & mask) != 0) {
+	        if ((y & mask) !== 0) {
 	            digit++;
 	            digit++;
 	        }
@@ -438,7 +438,7 @@ $(function() {
 		$("#download-button").click(startDownloading)
 		$("#stop-button").click(stopDownloading)
 
-		var timestamp = Date.now().toString();
+		//var timestamp = Date.now().toString();
 		//$("#output-directory-box").val(timestamp)
 	}
 
@@ -457,7 +457,7 @@ $(function() {
 
 	async function startDownloading() {
 
-		if(draw.getAll().features.length == 0) {
+		if(draw.getAll().features.length === 0) {
 			M.toast({html: 'You need to select a region first.', displayLength: 3000})
 			return;
 		}
@@ -521,7 +521,8 @@ $(function() {
 				return;
 			}
 
-			var boxLayer = previewRect(item);
+			// TB - Commenting out for performance, no need to draw box
+			// var boxLayer = previewRect(item);
 
 			var url = "/download-tile";
 
@@ -554,9 +555,13 @@ $(function() {
 					return;
 				}
 
-				if(data.code == 200) {
-					showTinyTile(data.image)
-					logItem(item.x, item.y, item.z, data.message);
+				if(data.code === 200) {
+					// TB - Commenting out for performance, no need to draw box
+					// 	showTinyTile(data.image)
+					// Only log every 100th item, try to improve performance
+					if (i % 100 === 0) {
+						logItem(item.x, item.y, item.z, data.message);
+					}
 				} else {
 					logItem(item.x, item.y, item.z, data.code + " Error downloading tile");
 				}
@@ -573,11 +578,22 @@ $(function() {
 			}).always(function(data) {
 				i++;
 
-				removeLayer(boxLayer);
-				updateProgress(i, allTiles.length);
+				// TB - Layer was not added for performance, no need to remove
+				//	removeLayer(boxLayer);
+				// Only update progress on every 100th download, performance
+				if (i % 100 === 0) {
+					updateProgress(i, allTiles.length);
+				}
 
 				done();
-				
+
+				// TB Added to avoid out of memory crash that happened after downloading lots of tiles
+				// Remove the completed request from the array, avoid out of memory crash
+				let removeIndex = requests.indexOf(request);
+				if (removeIndex >= 0) {
+					requests.splice(removeIndex, 1);
+				}
+
 				if(cancellationToken) {
 					return;
 				}
@@ -622,9 +638,10 @@ $(function() {
 	function logItemRaw(text) {
 
 		var logger = $('#log-view');
-		logger.val(logger.val() + '\n' + text);
-
-		logger.scrollTop(logger[0].scrollHeight);
+		// TB - Just replace current value, don't keep a running log for performance & memory saving
+		//logger.val(logger.val() + '\n' + text);
+		logger.val('\n' + text);
+		//logger.scrollTop(logger[0].scrollHeight);
 	}
 
 	function clearLogs() {

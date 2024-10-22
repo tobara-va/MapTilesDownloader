@@ -87,7 +87,7 @@ class serverHandler(BaseHTTPRequestHandler):
 
 			filePath = os.path.join("output", outputDirectory, outputFile)
 
-			print("\n")
+			#print("\n")
 
 			if self.writerByType(outputType).exists(filePath, x, y, z):
 				result["code"] = 200
@@ -102,7 +102,7 @@ class serverHandler(BaseHTTPRequestHandler):
 
 				result["code"] = Utils.downloadFileScaled(source, tempFilePath, x, y, z, outputScale)
 
-				print("HIT: " + source + "\n" + "RETURN: " + str(result["code"]))
+				#print("HIT: " + source + "\n" + "RETURN: " + str(result["code"]))
 
 				if os.path.isfile(tempFilePath):
 					self.writerByType(outputType).addTile(lock, filePath, tempFilePath, x, y, z, outputScale)
@@ -113,7 +113,7 @@ class serverHandler(BaseHTTPRequestHandler):
 					os.remove(tempFilePath)
 
 					result["message"] = 'Tile Downloaded'
-					print("SAVE: " + filePath)
+					#print("SAVE: " + filePath)
 
 				else:
 					result["message"] = 'Download failed'

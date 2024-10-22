@@ -1,14 +1,23 @@
 # Map Tiles Downloader 
-[![Docker Image CI](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/tobara8/MapTilesDownloader/actions/workflows/docker-image.yml)
-<img alt="Docker last pushed" src="https://img.shields.io/badge/dynamic/json?color=blue&label=Last%20pushed&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Ftobara8%2Fmap-tiles-downloader%2F&logo=docker&?link=http://left&link=https://hub.docker.com/repository/docker/tobara8/map-tiles-downloader">
-[![Docker Image Size](https://img.shields.io/docker/image-size/tobara8/map-tiles-downloader?logo=Docker)](https://hub.docker.com/r/jokobsk/pi.alert)
-<img src="https://img.shields.io/docker/pulls/tobara8/map-tiles-downloader?logo=docker&color=0aa8d2&logoColor=fff" alt="Docker Pulls">
+[![Docker Image CI](https://github.com/tblauer/MapTilesDownloader/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/tblauer/MapTilesDownloader/actions/workflows/docker-image.yml)
+<img alt="Docker last pushed" src="https://img.shields.io/badge/dynamic/json?color=blue&label=Last%20pushed&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Ftblauer%2Fmap-tiles-downloader%2F&logo=docker&?link=http://left&link=https://hub.docker.com/repository/docker/tobara8/map-tiles-downloader">
+[![Docker Image Size](https://img.shields.io/docker/image-size/tblauer/map-tiles-downloader?logo=Docker)](https://hub.docker.com/r/jokobsk/pi.alert)
+<img src="https://img.shields.io/docker/pulls/tblauer/map-tiles-downloader?logo=docker&color=0aa8d2&logoColor=fff" alt="Docker Pulls">
 
 **A super easy to use GUI for downloading map tiles**
 
 <p align="center">
   <img src="gif/map-tiles-downloader.gif">
 </p>
+
+## This is a fork of a fork
+
+The original project is  https://github.com/AliFlux/MapTilesDownloader
+It was forked by tobara8 to add attribution  https://github.com/tobara-va/MapTilesDownloader
+I forked tobara8 version and:
+ - Removed some UI functionality, the drawing of individual map tile squares, and some logging to help improve performance. 
+ - Fixed a crash and memory issue as described here https://github.com/AliFlux/MapTilesDownloader/issues/12
+
 
 ## So what does it do?
 
@@ -31,15 +40,8 @@ Needs **Python 3.0+**, [Pillow](https://pypi.org/project/Pillow/) library, and a
 Docker is a pretty simple way to install and contain applications. [Install Docker on your system](https://www.docker.com/products/docker-desktop), and paste this on your command line:
 
 ```sh
-docker run -v $PWD/output:/app/output/ -p 8080:8080 -it tobara8/map-tiles-downloader
+docker run -v $PWD/output:/app/output/ -p 8080:8080 -it tblauer/map-tiles-downloader
 ```
-or for a faster but less verbose UI
-
-```sh
-docker run -v $PWD/output:/app/output/ -p 8080:8080 -it tobara8/map-tiles-downloader:quiet-ui
-```
-
-Now open the browser and head over to `http://localhost:8080`. The downloaded maps will be stored in the `output` directory.
 
 ## Purpose
 
